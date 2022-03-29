@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tu peso en otros planeta</title>
+        <link rel="stylesheet" href="./CSS/main.css" />
+
+        <script src="./Scripts/index.js" defer></script>
+
+        <link rel="shortcut icon" href="./assets/png/planet-earth.png" /> 
+        <meta name="keywords" content="HTML5, CSS, Vanilla JavaScript, Sistema Solar, Espacio" />
+        <meta name="author" content="Carlos Machado" />
+        <meta name="description" content="" />
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="header--title">Calcula tu peso en otros planetas</h1>
+            <p class="header--subtitle">Ingresa tu peso en centimetros</p>
+        </header>
+
+        <main class="calculator">
+            <form action="" class="calculator__form">
+                <fieldset class="calculator__planets">
+                    <input type="checkbox" id="mercury" value="mercury" name="mercury"/>
+                    <label for="mercury">Mercury</label>
+
+                    <input type="checkbox" id="venus" value="venus" name="venus"/>
+                    <label for="venus">Venus</label>
+
+                    <input type="checkbox" id="mars" value="mars" name="mars"/>
+                    <label for="mars">Mars</label>
+
+                    <input type="checkbox" id="jupiter" value="jupiter" name="jupiter"/>
+                    <label for="jupiter">Jupiter</label>
+
+                    <input type="checkbox" id="saturn" value="saturn" name="saturn"/>
+                    <label for="saturn">Saturn</label>
+
+                    <input type="checkbox" id="uranus" value="uranus" name="uranus"/>
+                    <label for="uranus">Uranus</label>
+
+                    <input type="checkbox" id="neptune" value="neptune" name="neptune"/>
+                    <label for="neptune">Neptune</label>
+
+                    <input type="checkbox" id="pluto" value="pluto" name="pluto"/>
+                    <label for="pluto">pluto</label>
+                </fieldset>
+
+                <div class="earth-section">
+                    <input type="number" id="earth" name="earth"/>
+                    <label for="earth">Earth</label>
+                </div>
+
+                <div class="button-section">
+                    <button type="submit" class="button" onclick="calculateMyWeight()">Calculate</button>
+                </div>
+            </form>
+        </main>
+        
+        <footer class="footer">
+            <p>Made with ♥ by <a href="#">Carlos Machado</a></p>
+        </footer>
+    </body>
+</html>
