@@ -23,38 +23,38 @@
         <main class="calculator">
             <form action="" class="calculator__form">
                 <fieldset class="calculator__planets">
-                    <input type="checkbox" id="mercury" value="mercury" name="mercury"/>
+                    <input type="checkbox" id="mercury" value="Mercury" name="mercury"/>
                     <label for="mercury">Mercury</label>
 
-                    <input type="checkbox" id="venus" value="venus" name="venus"/>
+                    <input type="checkbox" id="venus" value="Venus" name="venus" class="planet"/>
                     <label for="venus">Venus</label>
 
-                    <input type="checkbox" id="mars" value="mars" name="mars"/>
+                    <input type="checkbox" id="mars" value="Mars" name="mars" class="planet"/>
                     <label for="mars">Mars</label>
 
-                    <input type="checkbox" id="jupiter" value="jupiter" name="jupiter"/>
+                    <input type="checkbox" id="jupiter" value="Jupiter" name="jupiter" class="planet"/>
                     <label for="jupiter">Jupiter</label>
 
-                    <input type="checkbox" id="saturn" value="saturn" name="saturn"/>
+                    <input type="checkbox" id="saturn" value="Saturn" name="saturn" class="planet"/>
                     <label for="saturn">Saturn</label>
 
-                    <input type="checkbox" id="uranus" value="uranus" name="uranus"/>
+                    <input type="checkbox" id="uranus" value="Uranus" name="uranus" class="planet" />
                     <label for="uranus">Uranus</label>
 
-                    <input type="checkbox" id="neptune" value="neptune" name="neptune"/>
+                    <input type="checkbox" id="neptune" value="Neptune" name="neptune" class="planet" />
                     <label for="neptune">Neptune</label>
 
-                    <input type="checkbox" id="pluto" value="pluto" name="pluto"/>
-                    <label for="pluto">pluto</label>
+                    <input type="checkbox" id="pluto" value="Pluto" name="pluto" class="planet" />
+                    <label for="pluto">Pluto</label>
                 </fieldset>
 
                 <div class="earth-section">
-                    <input type="number" id="earth" name="earth"/>
+                    <input type="number" id="earth" name="earth" required/>
                     <label for="earth">Earth</label>
                 </div>
 
                 <div class="button-section">
-                    <button type="submit" class="button" onclick="calculateMyWeight()">Calculate</button>
+                    <button type="button" class="button" onclick="calculateMyWeight()">Calculate</button>
                 </div>
             </form>
         </main>
