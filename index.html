@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Tu peso en otros planeta</title>
         <link rel="stylesheet" href="./CSS/main.css" />
+        <link rel="stylesheet" href="./CSS/pop-up.css" />
 
         <script src="./Scripts/index.js" defer></script>
 
@@ -14,50 +15,70 @@
         <meta name="author" content="Carlos Machado" />
         <meta name="description" content="" />
     </head>
-    <body>
+    <body class="main-body">
         <header class="header">
             <h1 class="header--title">Calcula tu peso en otros planetas</h1>
             <p class="header--subtitle">Ingresa tu peso en centimetros</p>
         </header>
 
-        <main class="calculator">
-            <form action="" class="calculator__form">
-                <fieldset class="calculator__planets">
-                    <input type="checkbox" id="mercury" value="Mercury" name="mercury"/>
-                    <label for="mercury">Mercury</label>
+        <section class="calculator">
+            <form action="" class="calculator--form">
+                <fieldset class="form__planets-list">
+                    
+                    <label for="mercury" class="checkbox-container">
+                        <input type="checkbox" id="mercury" value="Mercury" name="mercury"/>
+                        Mercury
+                    </label>
+                    
+                    <label for="venus" class="checkbox-container">
+                        <input type="checkbox" id="venus" value="Venus" name="venus" class="planet"/>
+                        Venus
+                    </label>
 
-                    <input type="checkbox" id="venus" value="Venus" name="venus" class="planet"/>
-                    <label for="venus">Venus</label>
+                    <label for="mars" class="checkbox-container">
+                        <input type="checkbox" id="mars" value="Mars" name="mars" class="planet"/>
+                        Mars
+                    </label>
 
-                    <input type="checkbox" id="mars" value="Mars" name="mars" class="planet"/>
-                    <label for="mars">Mars</label>
+                    <label for="jupiter" class="checkbox-container">
+                        <input type="checkbox" id="jupiter" value="Jupiter" name="jupiter" class="planet"/>
+                        Jupiter
+                    </label>
 
-                    <input type="checkbox" id="jupiter" value="Jupiter" name="jupiter" class="planet"/>
-                    <label for="jupiter">Jupiter</label>
+                    <label for="saturn" class="checkbox-container">
+                        <input type="checkbox" id="saturn" value="Saturn" name="saturn" class="planet"/>
+                        Saturn
+                    </label>
 
-                    <input type="checkbox" id="saturn" value="Saturn" name="saturn" class="planet"/>
-                    <label for="saturn">Saturn</label>
+                    <label for="uranus" class="checkbox-container">
+                        <input type="checkbox" id="uranus" value="Uranus" name="uranus" class="planet" />
+                        Uranus
+                    </label>
 
-                    <input type="checkbox" id="uranus" value="Uranus" name="uranus" class="planet" />
-                    <label for="uranus">Uranus</label>
+                    <label for="neptune" class="checkbox-container">
+                        <input type="checkbox" id="neptune" value="Neptune" name="neptune" class="planet" />
+                        Neptune
+                    </label>
 
-                    <input type="checkbox" id="neptune" value="Neptune" name="neptune" class="planet" />
-                    <label for="neptune">Neptune</label>
-
-                    <input type="checkbox" id="pluto" value="Pluto" name="pluto" class="planet" />
-                    <label for="pluto">Pluto</label>
+                    <label for="pluto" class="checkbox-container">
+                        <input type="checkbox" id="pluto" value="Pluto" name="pluto" class="planet" />
+                        Pluto
+                    </label>
                 </fieldset>
-
-                <div class="earth-section">
-                    <input type="number" id="earth" name="earth" required/>
-                    <label for="earth">Earth</label>
+                
+                <div class="form__user-input">
+                    <section class="earth-section">
+                        <label for="earth">Earth</label>
+                        <input type="number" id="earth" name="earth" required/>
+                    </section>
+    
+                    <section class="button-section">
+                        <button type="button" class="button" onclick="calculateMyWeight()">Calculate</button>
+                    </section>
                 </div>
-
-                <div class="button-section">
-                    <button type="button" class="button" onclick="calculateMyWeight()">Calculate</button>
-                </div>
+                
             </form>
-        </main>
+        </section>
         
         <footer class="footer">
             <p>Made with ♥ by <a href="#">Carlos Machado</a></p>

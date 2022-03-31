@@ -90,16 +90,57 @@ function calculateMyWeight() {
     function calculateMyWeight(n1, n2) {
         return (n1 * n2) / EARTHGRAVITY;
     }
-    
+
+    const answerContainer = document.createElement('div');
+    answerContainer.classList.add('answer-container');    
+
+    const answerTitle = document.createElement('h2');
+    answerTitle.classList.add('answer-title');
+    answerTitle.textContent = 'Your weight in the chosen planets';
+
+    const earthCard = document.createElement('div');
+    earthCard.classList.add('earth-card');
+
+    const earthCardTitle = document.createElement('h3');
+    earthCardTitle.classList.add('earth-card--title');
+    earthCardTitle.textContent = `The gravity in Earth is: ${EARTHGRAVITY}m/s2`
+
+    const earthCardText = document.createElement('p');
+    earthCardText.classList.add('earth-card--text');
+    earthCardText.textContent = `Then Your weight is: ${userWeight}Kg`;
+
+    earthCard.append(earthCardTitle, earthCardText);
+
+    const planetCards = [];
 
     for (let i = 0; i < chosenPlanets.length; i++) {
 
         let planetGravity = chosenPlanets[i].gravity;
-
         let finalWeight = calculateMyWeight(userWeight, planetGravity);
+
+        const planetCard = document.createElement('div');
+        planetCard.classList.add('planet-card');
+
+        const planetCardTitle = document.createElement('h3');
+        planetCardTitle.classList.add('planet-card--title');
+        planetCardTitle.textContent = `The gravity in ${chosenPlanets[i].name} is: ${chosenPlanets[i].gravity}m/s2`
+
+        const planetCardText = document.createElement('p');
+        planetCardText.classList.add('earth-card--text');
+        planetCardText.textContent = `Then Your weight is: ${finalWeight.toFixed(2)}kg`;
+
+        planetCard.append(planetCardTitle, planetCardText);
+
+        planetCards.push(planetCard);
 
         console.log(`Your weight in ${chosenPlanets[i].name} is: ${finalWeight.toFixed(2)}kg`);
     }  
+
+    answerContainer.append(answerTitle, earthCard);
+    answerContainer.append(...planetCards);
+
+    const body = document.querySelector('.main-body');
+    body.appendChild(answerContainer);
 }
 
 

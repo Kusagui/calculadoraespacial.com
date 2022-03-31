@@ -1,0 +1,34 @@
+.answer-container {
+    width: 100%;
+    max-width: 520px;
+
+    height: 100%;
+    max-height: 640;
+    scroll-behavior: smooth;
+    overflow: scroll;
+
+    background-color: white;
+    border: solid 2px black;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+.answer-title {
+
+}
+
+.earth-card {
+
+}
+
+.earth-card--title {
+
+}
+
+.earth-card--text {
+
+}
