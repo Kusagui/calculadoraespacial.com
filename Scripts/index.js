@@ -118,8 +118,16 @@ function calculateMyWeight() {
         let planetGravity = chosenPlanets[i].gravity;
         let finalWeight = calculateMyWeight(userWeight, planetGravity);
 
-        const planetCard = document.createElement('div');
+        const planetCard = document.createElement('article');
         planetCard.classList.add('planet-card');
+
+        const planetImage = document.createElement('img');
+        planetImage.src = '';
+        planetImage.classList.add('planet-card--image');
+
+        const imageContainer = document.createElement('figure');
+        imageContainer.classList.add('planet-image-container');
+        imageContainer.append(planetImage);
 
         const planetCardTitle = document.createElement('h3');
         planetCardTitle.classList.add('planet-card--title');
@@ -129,7 +137,11 @@ function calculateMyWeight() {
         planetCardText.classList.add('earth-card--text');
         planetCardText.textContent = `Then Your weight is: ${finalWeight.toFixed(2)}kg`;
 
-        planetCard.append(planetCardTitle, planetCardText);
+        const resultContainer = document.createElement('div');
+        resultContainer.classList.add('result-container');
+        resultContainer.append(planetCardTitle, planetCardText)
+
+        planetCard.append(imageContainer, resultContainer);
 
         planetCards.push(planetCard);
 
