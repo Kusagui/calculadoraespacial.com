@@ -21,12 +21,39 @@
 
 }
 
+/* Earth card */
+
 .earth-card {
 
 }
 
+.image-container {
+
+}
+
+.earth--image {
+
+}
+
+.earth-text-container {
+
+}
+
+.earth-card--title {
+
+}
+
+.earth-card--text {
+
+}
+
+/*  Planet cards */
+.planet-card {
+
+}
+
 .planet-image-container {
-    
+
 }
 
 .planet-card--image {
@@ -37,10 +64,10 @@
 
 }
 
-.earth-card--title {
+.planet-card--title {
 
 }
 
 .earth-card--text {
-
+    
 }

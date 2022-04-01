@@ -98,8 +98,16 @@ function calculateMyWeight() {
     answerTitle.classList.add('answer-title');
     answerTitle.textContent = 'Your weight in the chosen planets';
 
-    const earthCard = document.createElement('div');
+    const earthCard = document.createElement('article');
     earthCard.classList.add('earth-card');
+
+    const earthImage = document.createElement('img');
+    earthImage.src = '';
+    earthImage.classList.add('earth--image');
+
+    const earthImageContainer = document.createElement('figure');
+    earthImageContainer.classList.add('image-container');
+    earthImageContainer.append(earthImage);
 
     const earthCardTitle = document.createElement('h3');
     earthCardTitle.classList.add('earth-card--title');
@@ -109,7 +117,11 @@ function calculateMyWeight() {
     earthCardText.classList.add('earth-card--text');
     earthCardText.textContent = `Then Your weight is: ${userWeight}Kg`;
 
-    earthCard.append(earthCardTitle, earthCardText);
+    const earthTextContainer = document.createElement('div');
+    earthTextContainer.classList.add('earth-text-container');
+    earthTextContainer.append(earthCardTitle, earthCardText);
+
+    earthCard.append(earthImageContainer, earthTextContainer);
 
     const planetCards = [];
 
