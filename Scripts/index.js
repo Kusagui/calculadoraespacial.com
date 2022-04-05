@@ -91,13 +91,27 @@ function calculateMyWeight() {
         return (n1 * n2) / EARTHGRAVITY;
     }
 
+    /* Main container */
     const answerContainer = document.createElement('div');
-    answerContainer.classList.add('answer-container');    
+    answerContainer.classList.add('answer-container');   
+    
+    /* The close tab of main container */
+    const closeIcon = document.createElement('img');
+    closeIcon.classList.add('close-icon');
+    closeIcon.src = "../assets/icons/close.png"
+    closeIcon.width = "24"
 
+    const iconContainer = document.createElement('div');
+    iconContainer.classList.add('icon-container');
+
+    iconContainer.append(closeIcon);
+
+    /* Title */
     const answerTitle = document.createElement('h2');
     answerTitle.classList.add('answer-title');
     answerTitle.textContent = 'Your weight in the chosen planets';
 
+    /* Earth Card */
     const earthCard = document.createElement('article');
     earthCard.classList.add('earth-card');
 
@@ -130,6 +144,8 @@ function calculateMyWeight() {
         let planetGravity = chosenPlanets[i].gravity;
         let finalWeight = calculateMyWeight(userWeight, planetGravity);
 
+        /* Planet card */
+
         const planetCard = document.createElement('article');
         planetCard.classList.add('planet-card');
 
@@ -160,11 +176,17 @@ function calculateMyWeight() {
         console.log(`Your weight in ${chosenPlanets[i].name} is: ${finalWeight.toFixed(2)}kg`);
     }  
 
-    answerContainer.append(answerTitle, earthCard);
+    answerContainer.append(iconContainer, answerTitle, earthCard);
     answerContainer.append(...planetCards);
 
     const body = document.querySelector('.main-body');
     body.appendChild(answerContainer);
+
+    const closeNode = () => {
+        body.removeChild(answerContainer);
+    }
+
+    closeIcon.addEventListener('click', closeNode);
 }
 
 
