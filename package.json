@@ -1,0 +1,20 @@
+{
+  "name": "calculadoraespacial",
+  "version": "1.0.0",
+  "description": "Calculadora web con la cual puedas averiguar tu peso en diferentes planetas del sistema solar.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kusagui/calculadoraespacial.com.git"
+  },
+  "keywords": [],
+  "author": "Carlos Machado <carlos.machadomejia@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kusagui/calculadoraespacial.com/issues"
+  },
+  "homepage": "https://github.com/Kusagui/calculadoraespacial.com#readme"
+}
