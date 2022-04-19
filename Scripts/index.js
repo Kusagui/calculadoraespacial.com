@@ -151,8 +151,6 @@ function gettingPlanetAnswers(cPlanets) {
     return nodeTotalAnswers;
 }
 
-
-
 // Main function
 function startProgram() {
     // Getting Planets
@@ -200,8 +198,6 @@ function startProgram() {
     
     closeIcon.addEventListener('click', closeNode);  
 }
-
-
 
 const button = document.querySelector('.button');
 button.addEventListener('click', startProgram);
