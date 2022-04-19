@@ -117,7 +117,7 @@ function answerListItem(planetName, planetGravity, finalUW) {
 }
 
 // calculating and  pushing each answer to a container
-function gettingPlanetAnswers(cPlanets) {
+function gettingPlanetAnswers(cPlanets, uWeight) {
     let arrayTotalAnswers = [];
     let nodeTotalAnswers = document.createElement('ul');
     nodeTotalAnswers.classList.add('answers-list');
@@ -125,9 +125,6 @@ function gettingPlanetAnswers(cPlanets) {
     let finalTitle = document.createElement('h3');
     finalTitle.classList.add('final-planets-title');
     finalTitle.textContent = 'Your weight in the chosen planets';
-
-    // Getting user weight
-    let userWeight = getUserWeight();
 
     for (let i = 0; i < cPlanets.length; i++) {
         let planet = cPlanets[i];
@@ -138,7 +135,7 @@ function gettingPlanetAnswers(cPlanets) {
 
             if (planet.value === chosenPlanet) {                
         
-                let finalUserWeight = calculateMyWeight(userWeight, chosenGravity);
+                let finalUserWeight = calculateMyWeight(uWeight, chosenGravity);
 
                 let answerPlanet = answerListItem(chosenPlanet, chosenGravity, finalUserWeight);
 
@@ -160,8 +157,7 @@ function startProgram() {
     let userWeight = getUserWeight();
     
     // Calculating my weight
-    let finalAnswers = gettingPlanetAnswers(chosenPlanets);
-    console.log(finalAnswers);
+    let finalAnswers = gettingPlanetAnswers(chosenPlanets, userWeight);
     
     // Creando contenedor de sección de respuestas
     const answerContainer = document.createElement('section');
