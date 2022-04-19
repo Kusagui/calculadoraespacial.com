@@ -17,6 +17,11 @@
     transform: translate(-50%, -50%);
 }
 
+.close-icon {
+    width:  24px;
+    height: 24px;
+}
+
 .answer-title {
 
 }
