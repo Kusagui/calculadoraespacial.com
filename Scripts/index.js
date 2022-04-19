@@ -83,7 +83,7 @@ function answerListItem(planetName, planetGravity, finalUW) {
     let uWeight = finalUW; 
     
     const answerContainer = document.createElement('li');
-    answerContainer.classList.add('answer-container');
+    answerContainer.classList.add('answer-li');
 
     const answerP = document.createElement('div');
     answerP.classList.add('answer-planet');
@@ -105,7 +105,7 @@ function answerListItem(planetName, planetGravity, finalUW) {
 
     const answerText = document.createElement('p');
     answerText.classList.add('answer-text');
-    answerText.textContent = `${uWeight}`;
+    answerText.textContent = `${uWeight.toFixed(2)}`;
 
     textContainer.append(answerTitle, answerText);
 
@@ -147,7 +147,7 @@ function gettingPlanetAnswers(cPlanets) {
         }        
     }
 
-    nodeTotalAnswers.append(finalTitle, [...arrayTotalAnswers]);
+    nodeTotalAnswers.append(finalTitle, ...arrayTotalAnswers);
     return nodeTotalAnswers;
 }
 
