@@ -145,7 +145,7 @@ html
 
 .header--subtitle {
     color: var(--main-pink);
-    font-size: var(--medium-size);
+    font-size: var(--big -size);
     line-height: var(--big-size);
 }
 
@@ -170,7 +170,8 @@ html
 .form__planets-list {
     width: 100%;
     max-width: 400px;
-    border: solid 2px var(--clear-purple);
+    background-color:  var(--medium-purple);
+    border: none;
     padding: var(--medium-padding);
     border-radius: 12px;
     
@@ -186,20 +187,23 @@ html
     border-radius: 6px;
 
     padding: 1rem;
+    color: var(--main-white);
+    font-size: var(--medium-size);
+    font-weight: 700;
 }
 
 .checkbox-container:hover {
     background-color: var(--main-pink);
+    color: var(--dark-purple);
 }
 
 .checkbox-container > input[type=checkbox] {
     appearance: none;
     width: 24px;
     height: 24px;
-    margin-inline-end: .5rem;
+    margin-inline-end: 1rem;
 
     background-color: var(--dark-purple);
-    border: solid 1px var(--main-pink);
 }
 
 .form__user-input {
