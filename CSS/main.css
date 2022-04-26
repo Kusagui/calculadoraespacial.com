@@ -198,33 +198,56 @@ html
 }
 
 .checkbox-container > input[type=checkbox] {
+    -webkit-appearance: none;
     appearance: none;
     width: 24px;
     height: 24px;
+    cursor: pointer;
     margin-inline-end: 1rem;
-
     background-color: var(--dark-purple);
+    display: grid;
+    place-content: center;
+    border-radius: 4px;
+}
+
+input[type=checkbox]::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1rem  1rem 4rem var(--main-pink);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
 }
 
 .form__user-input {
     width: 100%;
     max-width: 280px;
     height: fit-content;
-
+    background-color: var(--medium-purple);
     display: flex;
     flex-direction: column;
+    border-radius: 12px;
 }
 
 .earth-section {
     display: flex;
     flex-direction: column;
-    border: solid 2px black;
 
-    padding: 0 2rem 1rem 2rem;
+    padding: var(--small-padding);
 }
 
 .earth-section > label {
     text-align: center;
+    color: var(--main-white);
+    font-size: var(--medium-size);
+    font-weight: bold;
+    letter-spacing: 1px;
     padding: 1rem;
 }
 
@@ -233,11 +256,12 @@ html
     max-width: 150px;
     height: 30px;
     margin: 0 auto;
+
 }
 
 .button-section {
-    border: solid 2px black;
-    padding: 2rem 2rem 2rem 2rem;
+    padding: var(--medium-padding);
+    padding-block-start: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -245,7 +269,9 @@ html
 }
 
 .button-section > button {
-    
+    width: 100%;
+    max-width: 150px;
+    padding: var(--small-padding-block);
 }
 
 
@@ -262,6 +288,12 @@ html
         margin-inline-start: 2rem;
         margin-inline-end: 2rem;
     }
+}
+
+@media (max-height: 600px) {
+    .main-body {
+        grid-template-rows: auto 1fr auto;
+    } 
 }
 
 @media (max-width: 720px) {
