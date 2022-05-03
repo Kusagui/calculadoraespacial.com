@@ -4,8 +4,8 @@
     --dark-purple: #1F1640;
     --medium-purple: #56308C;
     --clear-purple: #5D60A6;
-    --main-pink: #D157F2;
     --main-white: #e0d9e9;
+    --main-aqua: #33f3cd;
 
     /* ------------------------------------------------------------------------------ */
 
@@ -121,13 +121,17 @@ html
 
     position: relative;
 
-    background-color: var(--dark-purple);
+    /* background-color: var(--dark-purple); */
+    background-image: url('../assets/images/main-background-modified.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /*----------HEADER----------*/
 
 .header {
-    padding: var(--big-padding);
+    padding: 4rem 4rem 2rem 4rem;
     text-align: center;
 
     display: flex;
@@ -136,7 +140,7 @@ html
 }
 
 .header--title {
-    color: var(--main-white);
+    color: var(--main-aqua);
     font-size: var(--medium-font-title);
     line-height: var(--big-size-title);
     letter-spacing: 1px;
@@ -144,9 +148,11 @@ html
 }
 
 .header--subtitle {
-    color: var(--main-pink);
-    font-size: var(--big -size);
+    color: var(--main-white);
+    font-size: var(--big-size);
     line-height: var(--big-size);
+    font-weight: bold;
+
 }
 
 /* -------------------------APP-------------------------------------- */
@@ -170,8 +176,9 @@ html
 .form__planets-list {
     width: 100%;
     max-width: 400px;
-    background-color:  var(--medium-purple);
+    /* background-color:  var(--medium-purple); */
     border: none;
+    border: solid 2px var(--main-aqua);
     padding: var(--medium-padding);
     border-radius: 12px;
     
@@ -193,7 +200,7 @@ html
 }
 
 .checkbox-container:hover {
-    background-color: var(--main-pink);
+    background-color: var(--main-aqua);
     color: var(--dark-purple);
 }
 
@@ -218,7 +225,7 @@ input[type=checkbox]::before {
 
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1rem  1rem 4rem var(--main-pink);
+    box-shadow: inset 1rem  1rem 4rem var(--main-aqua);
 }
 
 input[type="checkbox"]:checked::before {
@@ -229,7 +236,8 @@ input[type="checkbox"]:checked::before {
     width: 100%;
     max-width: 280px;
     height: fit-content;
-    background-color: var(--medium-purple);
+    /* background-color: var(--medium-purple); */
+    border: solid 2px var(--main-aqua);
     display: flex;
     flex-direction: column;
     border-radius: 12px;
@@ -245,7 +253,7 @@ input[type="checkbox"]:checked::before {
 .earth-section > label {
     text-align: center;
     color: var(--main-white);
-    font-size: var(--medium-size);
+    font-size: var(--big-size);
     font-weight: bold;
     letter-spacing: 1px;
     padding: 1rem;
@@ -256,6 +264,7 @@ input[type="checkbox"]:checked::before {
     max-width: 150px;
     height: 30px;
     margin: 0 auto;
+    padding: var(--small-padding-inline-start);
 
 }
 
@@ -272,6 +281,15 @@ input[type="checkbox"]:checked::before {
     width: 100%;
     max-width: 150px;
     padding: var(--small-padding-block);
+    background-color: var(--dark-purple);
+    border: none;
+    border-radius: 8px;
+    color: var(--main-white);
+    font-weight: bold;
+}
+
+.button-section > button:hover {
+    background-color: var(--medium-purple);
 }
 
 
@@ -280,6 +298,26 @@ input[type="checkbox"]:checked::before {
 .footer {
     padding: 2rem;
     text-align: center;
+}
+
+.footer > p {
+    font-size: var(--big-size);
+    color: var(--main-white);
+    line-height: var(--medium-size);
+}
+
+.footer > p > a {
+    color: var(--main-aqua);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer > p > a:hover {
+    text-decoration: underline;
+}
+
+.footer > p > span {
+    color: var(--main-aqua);
 }
 
 /* Media queries */
@@ -305,6 +343,10 @@ input[type="checkbox"]:checked::before {
 @media (max-width: 759px) {
     .form__planets-list {        
         margin-block-end: 1rem;
+    }
+
+    .form__user-input {
+        margin: var(--medium-margin-block-end);
     }
 }
 

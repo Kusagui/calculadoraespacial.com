@@ -18,14 +18,24 @@
     </head>
     <body class="main-body">
         <header class="header">
-            <h1 class="header--title">Calcula tu peso en otros planetas</h1>
-            <p class="header--subtitle">Ingresa tu peso en centimetros</p>
+            <h1 class="header--title">Calculate your weight in other planets</h1>
+            <p class="header--subtitle">Write down your weight in kilograms</p>
         </header>
 
         <section class="calculator">
             <form action="" class="calculator--form">
-                <fieldset class="form__planets-list">
-                    
+                <div class="form__user-input">
+                    <section class="earth-section">
+                        <label for="earth">Earth</label>
+                        <input type="number" id="earth" name="earth" placeholder="E.g. 82.5" required/>
+                    </section>
+    
+                    <section class="button-section">
+                        <button type="button" class="button">Calculate</button>
+                    </section>
+                </div>
+                
+                <fieldset class="form__planets-list">                    
                     <label for="mercury" class="checkbox-container">
                         <input type="checkbox" id="mercury" value="Mercury" name="mercury"/>
                         Mercury
@@ -66,23 +76,11 @@
                         Pluto
                     </label>
                 </fieldset>
-                
-                <div class="form__user-input">
-                    <section class="earth-section">
-                        <label for="earth">Earth</label>
-                        <input type="number" id="earth" name="earth" required/>
-                    </section>
-    
-                    <section class="button-section">
-                        <button type="button" class="button">Calculate</button>
-                    </section>
-                </div>
-                
             </form>
         </section>
         
         <footer class="footer">
-            <p>Made with ♥ by <a href="#">Carlos Machado</a></p>
+            <p>Made with <span>♥</span> by <a href="#">Carlos Machado</a></p>
         </footer>
 
     </body>
