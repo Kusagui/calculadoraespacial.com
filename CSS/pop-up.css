@@ -1,78 +1,89 @@
 .answer-container {
     width: 100%;
-    max-width: 520px;
 
     height: 100%;
     max-height: 640px;
-    scroll-behavior: smooth;
+    border-radius: 16px;
+    border: 2px solid var(--main-aqua);
     overflow: scroll;
-
-    background-color: white;
-    border: solid 2px black;
+    background-color: var(--dark-purple);
 
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    left: 0;
+}
 
-    transform: translate(-50%, -50%);
+.answer-container::-webkit-scrollbar {
+    display: none;
+}
+
+.icon-container {
+    padding: 1rem;
+    width: 100%;
+    border-bottom: 2px solid var(--main-aqua);
+    margin: var(--medium-margin-block-end);
 }
 
 .close-icon {
-    width:  24px;
-    height: 24px;
+    width:  20px;
+    height: 20px;
+
+    display: block;
+    margin-inline-start: auto;
+    cursor: pointer;
 }
 
 .answer-title {
-
+    font-size: var(--medium-size-title);
+    color: var(--main-white);
+    text-align: center;
+    margin: calc(var(--small-margin-block-end) / 2);
 }
 
-/* Earth card */
-
-.earth-card {
-
+.user-input-reminder {
+    font-size: var(--big-size);
+    color: var(--main-white);
+    text-align: center;
+    font-weight: 500;   
+    margin: var(--medium-margin-block-end);
 }
 
-.image-container {
-
+/* Earth weight reminder */
+.final-planets-title {
+    font-size: var(--small-size-title);
+    color: var(--main-aqua);
+    text-align: center;
+    font-weight: 700;
 }
 
-.earth--image {
 
+/* Ans2ers container */
+.answers-container {
+    width: 100%;
+    height: auto;
+    padding: 2rem 2rem 0 2rem;
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
 }
 
-.earth-text-container {
 
+.answers-container > .answer {
+    width: 100%;
+    padding: var(--small-padding);
 }
 
-.earth-card--title {
-
-}
-
-.earth-card--text {
-
+.answer-planet {
+    display: flex;
+    width: 100%;
 }
 
 /*  Planet cards */
-.planet-card {
-
+.image-container > .planet-image {
+    width: 100%;
+    max-width: 160px;
+    border-radius: 100%;
 }
 
-.planet-image-container {
 
-}
-
-.planet-card--image {
-
-}
-
-.result-container {
-
-}
-
-.planet-card--title {
-
-}
-
-.earth-card--text {
-    
-}

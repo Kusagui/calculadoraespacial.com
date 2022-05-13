@@ -16,7 +16,7 @@
 
     /* Font size title */
     --small-size-title: 2.4rem;
-    --medium-font-title: 3.4rem;
+    --medium-size-title: 3.4rem;
     --big-size-title: 4.4rem;
 
     /* ------------------------------------------------------------------------------- */
@@ -110,6 +110,10 @@ html
     font-family: Arial, Helvetica, sans-serif;  
 }
 
+ul > li {
+    list-style: none;
+}
+
 /* -------------------BODY------------------------ */
 
 .main-body {
@@ -141,8 +145,8 @@ html
 
 .header--title {
     color: var(--main-aqua);
-    font-size: var(--medium-font-title);
-    line-height: var(--big-size-title);
+    font-size: var(--medium-size-title);
+    line-height: calc(var(--medium-size-title) + .8rem);
     letter-spacing: 1px;
     margin: var(--small-margin-block-end);
 }
@@ -160,6 +164,8 @@ html
     width: 100%;
     max-width: 780px;
     margin: 0 auto;
+
+    position: relative;
 }
 
 .calculator--form {
