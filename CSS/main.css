@@ -1,0 +1,370 @@
+:root {    
+    /* Color */
+    --main-black: #100D26;
+    --dark-purple: #1F1640;
+    --medium-purple: #56308C;
+    --clear-purple: #5D60A6;
+    --main-white: #e0d9e9;
+    --main-aqua: #33f3cd;
+
+    /* ------------------------------------------------------------------------------ */
+
+    /* Font size regular */
+    --small-size: 1.2rem;
+    --medium-size: 1.4rem;
+    --big-size: 1.8rem;
+
+    /* Font size title */
+    --small-size-title: 2.4rem;
+    --medium-size-title: 3.4rem;
+    --big-size-title: 4.4rem;
+
+    /* ------------------------------------------------------------------------------- */
+
+    /* padding general */
+    --small-padding: 1rem;
+    --medium-padding: 2rem;
+    --big-padding: 4rem;
+
+    /* padding block */
+    --small-padding-block: 1rem 0 1rem 0;
+    --medium-padding-block: 2rem 0 2rem 0;
+    --big-padding-block: 4rem 0 4rem 0;
+
+    /* padding block start */
+    --small-padding-block-start: 1rem 0 0 0;
+    --medium-padding-block-start: 2rem 0 0 0;
+    --big-padding-block-start: 4rem 0 0 0;
+
+    /* padding block end */
+    --small-padding-block-end: 0 0 1rem 0;
+    --medium-padding-block-end: 0 0 2rem 0;
+    --big-padding-block-end: 0 0 4rem 0;
+
+    /* padding inline */
+    --small-padding-inline: 0 1rem 0 1rem;
+    --medium-padding-inline: 0 2rem 0 2rem;
+    --big-padding-inline: 0 4rem 0 4rem;
+
+    /* padding inline start */
+    --small-padding-inline-start: 0 0 0 1rem;
+    --medium-padding-inline-start: 0 0 0 2rem;
+    --big-padding-inline-start: 0 0 0 4rem;
+
+    /* padding inline end */
+    --small-padding-inline-end: 0 1rem 0 0;
+    --medium-padding-inline-end: 0 2rem 0 0;
+    --big-padding-inline-end: 0 4rem 0 0;
+
+    /* ------------------------------------------------------------------------------- */
+
+    /* margin general */
+    --general-margin: auto;
+    --small-margin: 1rem;
+    --medium-margin: 2rem;
+    --big-margin: 4rem;
+
+    /* margin block */
+    --general-margin-block: auto 0;
+    --small-margin-block: 1rem 0 1rem 0;
+    --medium-margin-block: 2rem 0 2rem 0;
+    --big-margin-block: 4rem 0 4rem 0;
+
+    /* margin block start */
+    --small-margin-block-start: 1rem 0 0 0;
+    --medium-margin-block-start: 2rem 0 0 0;
+    --big-margin-block-start: 4rem 0 0 0;
+
+    /* margin block end */
+    --small-margin-block-end: 0 0 1rem 0;
+    --medium-margin-block-end: 0 0 2rem 0;
+    --big-margin-block-end: 0 0 4rem 0;
+
+    /* margin inline */
+    --general-margin-inline: 0 auto;
+    --small-margin-inline: 0 1rem 0 1rem;
+    --medium-margin-inline: 0 2rem 0 2rem;
+    --big-margin-inline: 0 4rem 0 4rem;
+
+    /* margin inline start */
+    --small-margin-inline-start: 0 0 0 1rem;
+    --medium-margin-inline-start: 0 0 0 2rem;
+    --big-margin-inline-start: 0 0 0 4rem;
+
+    /* margin inline end */
+    --small-margin-inline-end: 0 1rem 0 0;
+    --medium-margin-inline-end: 0 2rem 0 0;
+    --big-margin-inline-end: 0 4rem 0 0;
+}
+
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html
+{
+    font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;  
+}
+
+ul > li {
+    list-style: none;
+}
+
+/* -------------------BODY------------------------ */
+
+.main-body {
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr auto;
+
+    position: relative;
+
+    /* background-color: var(--dark-purple); */
+    background-image: url('../assets/images/main-background-modified.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/*----------HEADER----------*/
+
+.header {
+    padding: 4rem 4rem 2rem 4rem;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.header--title {
+    color: var(--main-aqua);
+    font-size: var(--medium-size-title);
+    line-height: calc(var(--medium-size-title) + .8rem);
+    letter-spacing: 1px;
+    margin: var(--small-margin-block-end);
+}
+
+.header--subtitle {
+    color: var(--main-white);
+    font-size: var(--big-size);
+    line-height: var(--big-size);
+    font-weight: bold;
+
+}
+
+/* -------------------------APP-------------------------------------- */
+.calculator {
+    width: 100%;
+    max-width: 780px;
+    margin: 0 auto;
+
+    position: relative;
+}
+
+.calculator--form {
+    width: 100%;
+    padding: var(--medium-padding);
+    
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    /* background-color: var(--clear-purple); */
+}
+
+.form__planets-list {
+    width: 100%;
+    max-width: 400px;
+    /* background-color:  var(--medium-purple); */
+    border: none;
+    border: solid 2px var(--main-aqua);
+    padding: var(--medium-padding);
+    border-radius: 12px;
+    
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 50%);
+    grid-template-rows: repeat(auto-fit, 1fr);
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+
+    padding: 1rem;
+    color: var(--main-white);
+    font-size: var(--medium-size);
+    font-weight: 700;
+}
+
+.checkbox-container:hover {
+    background-color: var(--main-aqua);
+    color: var(--dark-purple);
+}
+
+.checkbox-container > input[type=checkbox] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-inline-end: 1rem;
+    background-color: var(--dark-purple);
+    display: grid;
+    place-content: center;
+    border-radius: 4px;
+}
+
+input[type=checkbox]::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1rem  1rem 4rem var(--main-aqua);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.form__user-input {
+    width: 100%;
+    max-width: 280px;
+    height: fit-content;
+    /* background-color: var(--medium-purple); */
+    border: solid 2px var(--main-aqua);
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+}
+
+.earth-section {
+    display: flex;
+    flex-direction: column;
+
+    padding: var(--small-padding);
+}
+
+.earth-section > label {
+    text-align: center;
+    color: var(--main-white);
+    font-size: var(--big-size);
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 1rem;
+}
+
+.earth-section > input {
+    width: 100%;
+    max-width: 150px;
+    height: 30px;
+    margin: 0 auto;
+    padding: var(--small-padding-inline-start);
+
+}
+
+.button-section {
+    padding: var(--medium-padding);
+    padding-block-start: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block-start: 1rem;
+}
+
+.button-section > button {
+    width: 100%;
+    max-width: 150px;
+    padding: var(--small-padding-block);
+    background-color: var(--dark-purple);
+    border: none;
+    border-radius: 8px;
+    color: var(--main-white);
+    font-weight: bold;
+}
+
+.button-section > button:hover {
+    background-color: var(--medium-purple);
+}
+
+
+/* FOOTER */
+
+.footer {
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer > p {
+    font-size: var(--big-size);
+    color: var(--main-white);
+    line-height: var(--medium-size);
+}
+
+.footer > p > a {
+    color: var(--main-aqua);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer > p > a:hover {
+    text-decoration: underline;
+}
+
+.footer > p > span {
+    color: var(--main-aqua);
+}
+
+/* Media queries */
+@media (min-width: 720px) {
+    .form__planets-list {        
+        margin-inline-start: 2rem;
+        margin-inline-end: 2rem;
+    }
+}
+
+@media (max-height: 600px) {
+    .main-body {
+        grid-template-rows: auto 1fr auto;
+    } 
+}
+
+@media (max-width: 720px) {
+    .main-body {
+        grid-template-rows: auto 1fr auto;
+    }    
+}
+
+@media (max-width: 759px) {
+    .form__planets-list {        
+        margin-block-end: 1rem;
+    }
+
+    .form__user-input {
+        margin: var(--medium-margin-block-end);
+    }
+}
+
+@media (min-width: 760px) {
+    .form__planets-list {        
+        margin: 0;
+    }
+}
+
+@media (min-width: 780px) {
+    .calculator--form {
+        border-radius: 14px;
+    }
+}
+
