@@ -1,165 +1,175 @@
-import { planets } from "./source/planets.js";
+import { solarSystem } from "./source/planets.js";
 
 // Obteniendo el los planetas deseados por el usuario
 function getPlanetsInput() {
-    // Tomando checkboxes dentro de un nodeList
-    let selectedPlanets = document.querySelectorAll('input[type=checkbox]');  
-    
-    // Convirtiendo nodeList a un array
-    let InitialAnswers = [...selectedPlanets];
-    
-    // Variable que contenga los planetas seleccionados
-    let realAnswers = [];
-    
-    // Empujando cada planeta seleccionado al contenedor de respuestas
-    InitialAnswers.forEach((answer) => {
-    
-        if (answer.checked) {
-            realAnswers.push(answer);
-        }
-    
-    });
+  // Tomando checkboxes dentro de un nodeList
+  let selectedPlanets = document.querySelectorAll("input[type=checkbox]");
 
-    return realAnswers;
+  // Convirtiendo nodeList a un array
+  let InitialAnswers = [...selectedPlanets];
+
+  // Variable que contenga los planetas seleccionados
+  let realAnswers = [];
+
+  // Empujando cada planeta seleccionado al contenedor de respuestas
+  InitialAnswers.forEach((answer) => {
+    if (answer.checked) {
+      realAnswers.push(answer);
+    }
+  });
+
+  return realAnswers;
 }
 
 // Get user input weight
 function getUserWeight() {
-    let userWeight = document.querySelector('#earth');
-    let weightValue = parseInt(userWeight.value);
-    
-    return weightValue;
+  let userWeight = document.querySelector("#earth");
+  let weightValue = parseInt(userWeight.value);
+
+  return weightValue;
 }
 
 // Calculate weight in other planets
 function calculateMyWeight(userW, planetG) {
-    const earthGravity = planets[2].gravity;
-    let myNewWeight = (userW * planetG) / earthGravity;
-    return myNewWeight;
+  const earthGravity = solarSystem[2].gravity;
+  let myNewWeight = (userW * planetG) / earthGravity;
+  return myNewWeight;
 }
 
 // Creating the answers by planet card
 function answerListItem(planetName, planetGravity, planetI, finalUW) {
-    
-    let pName = planetName;
-    let pGravity = planetGravity;
-    let pImage = planetI;
-    let uWeight = finalUW; 
-    
-    const answerContainer = document.createElement('li');
-    answerContainer.classList.add('answer');
+  let pName = planetName;
+  let pGravity = planetGravity;
+  let pImage = planetI;
+  let uWeight = finalUW;
 
-    const answerP = document.createElement('div');
-    answerP.classList.add('answer-planet');
+  const answerContainer = document.createElement("li");
+  answerContainer.classList.add("answer");
 
-    const imageContainer = document.createElement('div');
-    imageContainer.classList.add('image-container');
+  const answerP = document.createElement("div");
+  answerP.classList.add("answer-planet");
 
-    const planetImage = document.createElement('img');
-    planetImage.classList.add('planet-image');
-    planetImage.src = `${pImage}`;
+  const imageContainer = document.createElement("div");
+  imageContainer.classList.add("image-container");
 
-    imageContainer.appendChild(planetImage);
+  const planetImage = document.createElement("img");
+  planetImage.classList.add("planet-image");
+  planetImage.src = `${pImage}`;
 
-    const textContainer = document.createElement('div');
-    textContainer.classList.add('text-container');
+  imageContainer.appendChild(planetImage);
 
-    const answerTitle = document.createElement('h3');
-    answerTitle.classList.add('answer-title-planet');
-    answerTitle.textContent = `The gravity of the planet ${pName} is: ${pGravity}`;
+  const textContainer = document.createElement("div");
+  textContainer.classList.add("text-container");
 
-    const answerText = document.createElement('p');
-    answerText.classList.add('answer-text');
-    answerText.textContent = `${uWeight.toFixed(2)}`;
+  const answerTitle = document.createElement("h3");
+  answerTitle.classList.add("answer-title-planet");
+  answerTitle.textContent = `The gravity of the planet ${pName} is: ${pGravity}`;
 
-    textContainer.append(answerTitle, answerText);
+  const answerText = document.createElement("p");
+  answerText.classList.add("answer-text");
+  answerText.textContent = `${uWeight.toFixed(2)}`;
 
-    answerP.append(imageContainer, textContainer);
+  textContainer.append(answerTitle, answerText);
 
-    answerContainer.appendChild(answerP);
+  answerP.append(imageContainer, textContainer);
 
-    return answerContainer;
+  answerContainer.appendChild(answerP);
+
+  return answerContainer;
 }
 
 // calculating and  pushing each answer to a container
 function gettingPlanetAnswers(cPlanets, uWeight) {
-    let arrayTotalAnswers = [];
-    let nodeTotalAnswers = document.createElement('ul');
-    nodeTotalAnswers.classList.add('answers-container');
+  let arrayTotalAnswers = [];
+  let nodeTotalAnswers = document.createElement("ul");
+  nodeTotalAnswers.classList.add("answers-container");
 
-    for (let i = 0; i < cPlanets.length; i++) {
-        let planet = cPlanets[i];
+  for (let i = 0; i < cPlanets.length; i++) {
+    let planet = cPlanets[i];
 
-        for (let p = 0; p < planets.length; p++ ) {
-            let chosenPlanet = planets[p].name;
-            let chosenGravity = planets[p].gravity;
-            let planetImg = planets[p].photo;
+    for (let p = 0; p < solarSystem.length; p++) {
+      let chosenPlanet = solarSystem[p].name;
+      let chosenGravity = solarSystem[p].gravity;
+      let planetImg = solarSystem[p].photo;
 
-            if (planet.value === chosenPlanet) {                
-        
-                let finalUserWeight = calculateMyWeight(uWeight, chosenGravity);
+      if (planet.value === chosenPlanet) {
+        let finalUserWeight = calculateMyWeight(uWeight, chosenGravity);
 
-                let answerPlanet = answerListItem(chosenPlanet, chosenGravity, planetImg, finalUserWeight);
+        let answerPlanet = answerListItem(
+          chosenPlanet,
+          chosenGravity,
+          planetImg,
+          finalUserWeight
+        );
 
-                arrayTotalAnswers.push(answerPlanet);
-            }
-        }        
+        arrayTotalAnswers.push(answerPlanet);
+      }
     }
+  }
 
-    nodeTotalAnswers.append(...arrayTotalAnswers);
-    return nodeTotalAnswers;
+  nodeTotalAnswers.append(...arrayTotalAnswers);
+  return nodeTotalAnswers;
 }
 
 // Main function
 function startProgram() {
-    // Getting Planets
-    let chosenPlanets = getPlanetsInput();
+  // Getting Planets
+  let chosenPlanets = getPlanetsInput();
 
-    // Getting user weight
-    let userWeight = getUserWeight();
-    
-    // Calculating my weight
-    let finalAnswers = gettingPlanetAnswers(chosenPlanets, userWeight);
-    
-    // Creando contenedor de sección de respuestas
-    const answerContainer = document.createElement('section');
-    answerContainer.classList.add('answer-container');
+  // Getting user weight
+  let userWeight = getUserWeight();
 
-    // The close tab of main container 
-    const closeIcon = document.createElement('img');
-    closeIcon.classList.add('close-icon');
-    closeIcon.src = '../assets/icons/close.png';
+  // Calculating my weight
+  let finalAnswers = gettingPlanetAnswers(chosenPlanets, userWeight);
 
-    const iconContainer = document.createElement('div');
-    iconContainer.classList.add('icon-container');
+  // Creando contenedor de sección de respuestas
+  const answerContainer = document.createElement("section");
+  answerContainer.classList.add("answer-container");
 
-    iconContainer.append(closeIcon);
+  // The close tab of main container
+  const closeIcon = document.createElement("img");
+  closeIcon.classList.add("close-icon");
+  closeIcon.src = "../assets/icons/close.png";
 
-    // Title 
-    const answerTitle = document.createElement('h2');
-    answerTitle.classList.add('answer-title');
-    answerTitle.textContent = 'Hi Friend!';
+  const iconContainer = document.createElement("div");
+  iconContainer.classList.add("icon-container");
 
-    const inputRemainder = document.createElement('p');
-    inputRemainder.classList.add('user-input-reminder');
-    inputRemainder.textContent = `Your weight in the planet ${planets[2].name} is ${userWeight}`;
+  iconContainer.append(closeIcon);
 
-    const finalTitle = document.createElement('h3');
-    finalTitle.classList.add('final-planets-title');
-    finalTitle.textContent = 'Your weight in the chosen planets';
+  // Title
+  const answerTitle = document.createElement("h2");
+  answerTitle.classList.add("answer-title");
+  answerTitle.textContent = "Hi Friend!";
 
-    answerContainer.append(iconContainer, answerTitle, inputRemainder, finalTitle, finalAnswers);
+  const inputRemainder = document.createElement("p");
+  inputRemainder.classList.add("user-input-reminder");
+  inputRemainder.textContent = `Your weight in the planet ${solarSystem[2].name} is ${userWeight}`;
 
-    const calculator = document.querySelector('.calculator');
-    calculator.appendChild(answerContainer);  
+  const finalTitle = document.createElement("h3");
+  finalTitle.classList.add("final-planets-title");
+  finalTitle.textContent = "Your weight in the chosen planets";
 
-    const closeNode = () => {
-        calculator.removeChild(answerContainer);
-    }
-    
-    closeIcon.addEventListener('click', closeNode);  
+  answerContainer.append(
+    iconContainer,
+    answerTitle,
+    inputRemainder,
+    finalTitle,
+    finalAnswers
+  );
+
+  const calculator = document.querySelector(".calculator");
+  calculator.appendChild(answerContainer);
+
+  const closeNode = () => {
+    calculator.removeChild(answerContainer);
+  };
+
+  closeIcon.addEventListener("click", closeNode);
 }
 
-const button = document.querySelector('.button');
-button.addEventListener('click', startProgram);
-
+const button = document.querySelector(".button");
+button.addEventListener("click", (event) => {
+  event.preventDefault();
+  startProgram();
+  document.querySelector(".calculator--form").reset();
+});

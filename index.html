@@ -38,7 +38,7 @@
 
     <section class="hero-section">
       <h1 class="hero--title">Calculate your weight in other planets</h1>
-      <h2 class="hero--subtitle">Write down your weight</h2>
+      <h2 class="hero--subtitle">Write down your weight in kilograms</h2>
     </section>
 
     <section class="info-section hidden-element"></section>
@@ -52,9 +52,14 @@
               type="number"
               id="earth"
               name="earth"
-              placeholder="E.g. 82.5"
+              placeholder="82"
+              value="0"
               required
             />
+            <div class="warn">
+              <p class="weight--warn"></p>
+              <p class="planets--warn"></p>
+            </div>
           </section>
 
           <section class="button-section">

@@ -81,8 +81,8 @@
 
 /*  Planet cards */
 .image-container > .planet-image {
-    width: 100%;
-    max-width: 160px;
+    width: 150px;
+    height: 150px;
     border-radius: 100%;
 }
 

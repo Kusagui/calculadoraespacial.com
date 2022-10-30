@@ -78,12 +78,20 @@ ul > li {
     background-color: var(--dark-purple);
 }
 
-/*----------HEADER----------*/
+/*----------Header----------*/
 
 .header {
     padding: 4rem;    
     height: fit-content;
 }
+
+.main-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*----------Hero----------*/
 
 .hero-section {
     text-align: center;
@@ -163,7 +171,7 @@ ul > li {
     height: 24px;
     cursor: pointer;
     margin-inline-end: 1rem;
-    background-color: var(--dark-purple);
+    background-color: var(--medium-purple);
     display: grid;
     place-content: center;
     border-radius: 4px;
@@ -232,7 +240,7 @@ input[type="checkbox"]:checked::before {
     width: 100%;
     max-width: 150px;
     padding-block: var(--small-padding);
-    background-color: var(--dark-purple);
+    background-color: var(--medium-purple);
     border: none;
     border-radius: 8px;
     color: var(--main-white);
@@ -240,7 +248,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .button-section > button:hover {
-    background-color: var(--medium-purple);
+    background-color: var(--dark-purple);
 }
 
 
