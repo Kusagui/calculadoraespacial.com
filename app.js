@@ -31,7 +31,7 @@ function calculateMyWeight(userW, planetG) {
   return myNewWeight;
 }
 
-// Creating the answers by planet card
+// Creating the answer by planet card
 function answerListItem(planet, finalUW) {
   let pName = planet.name;
   let pGravity = planet.gravity;
