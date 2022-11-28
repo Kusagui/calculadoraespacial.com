@@ -1,5 +1,5 @@
 class Planet {
-  constructor({ name, gravity, photo = "" }) {
+  constructor({ name = "", gravity = 0, photo = "" } = {}) {
     this.name = name;
     this.gravity = gravity;
     this.photo = photo;

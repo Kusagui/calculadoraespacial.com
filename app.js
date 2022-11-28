@@ -1,23 +1,19 @@
+// Importando los objetos planeta para manejar los datos
 import { solarSystem } from "./source/planets.js";
+// Importando componente de tarjeta para cada respuesta
+import planetCard from "./source/components/planet-card.js";
+customElements.define("planet-card", planetCard);
 
 // Obteniendo el los planetas deseados por el usuario
 function getPlanetsInput() {
-  // Tomando checkboxes dentro de un nodeList
   let selectedPlanets = document.querySelectorAll("input[type=checkbox]");
-
-  // Convirtiendo nodeList a un array
   let InitialAnswers = [...selectedPlanets];
-
-  // Variable que contenga los planetas seleccionados
   let realAnswers = [];
-
-  // Empujando cada planeta seleccionado al contenedor de respuestas
   InitialAnswers.forEach((answer) => {
     if (answer.checked) {
-      realAnswers.push(answer);
+      realAnswers.push(answer.value);
     }
   });
-
   return realAnswers;
 }
 
@@ -25,7 +21,6 @@ function getPlanetsInput() {
 function getUserWeight() {
   let userWeight = document.querySelector("#earth");
   let weightValue = parseInt(userWeight.value);
-
   return weightValue;
 }
 
@@ -37,75 +32,43 @@ function calculateMyWeight(userW, planetG) {
 }
 
 // Creating the answers by planet card
-function answerListItem(planetName, planetGravity, planetI, finalUW) {
-  let pName = planetName;
-  let pGravity = planetGravity;
-  let pImage = planetI;
+function answerListItem(planet, finalUW) {
+  let pName = planet.name;
+  let pGravity = planet.gravity;
+  let pImage = planet.photo;
   let uWeight = finalUW;
 
   const answerContainer = document.createElement("li");
   answerContainer.classList.add("answer");
 
-  const answerP = document.createElement("div");
-  answerP.classList.add("answer-planet");
+  const pCard = document.createElement("planet-card");
+  pCard.dataset.name = pName;
+  pCard.dataset.img = pImage;
+  pCard.dataset.gravity = pGravity;
+  pCard.dataset.userWeight = uWeight.toFixed(2);
 
-  const imageContainer = document.createElement("div");
-  imageContainer.classList.add("image-container");
-
-  const planetImage = document.createElement("img");
-  planetImage.classList.add("planet-image");
-  planetImage.src = `${pImage}`;
-
-  imageContainer.appendChild(planetImage);
-
-  const textContainer = document.createElement("div");
-  textContainer.classList.add("text-container");
-
-  const answerTitle = document.createElement("h3");
-  answerTitle.classList.add("answer-title-planet");
-  answerTitle.textContent = `The gravity of the planet ${pName} is: ${pGravity}`;
-
-  const answerText = document.createElement("p");
-  answerText.classList.add("answer-text");
-  answerText.textContent = `${uWeight.toFixed(2)}`;
-
-  textContainer.append(answerTitle, answerText);
-
-  answerP.append(imageContainer, textContainer);
-
-  answerContainer.appendChild(answerP);
+  answerContainer.appendChild(pCard);
 
   return answerContainer;
 }
 
 // calculating and  pushing each answer to a container
-function gettingPlanetAnswers(cPlanets, uWeight) {
+function gettingPlanetAnswers(chosenPlanets, uWeight) {
   let arrayTotalAnswers = [];
   let nodeTotalAnswers = document.createElement("ul");
   nodeTotalAnswers.classList.add("answers-container");
 
-  for (let i = 0; i < cPlanets.length; i++) {
-    let planet = cPlanets[i];
+  chosenPlanets.forEach((chosenPlanet) => {
+    for (let index = 0; index < solarSystem.length; index++) {
+      const planet = solarSystem[index];
 
-    for (let p = 0; p < solarSystem.length; p++) {
-      let chosenPlanet = solarSystem[p].name;
-      let chosenGravity = solarSystem[p].gravity;
-      let planetImg = solarSystem[p].photo;
-
-      if (planet.value === chosenPlanet) {
-        let finalUserWeight = calculateMyWeight(uWeight, chosenGravity);
-
-        let answerPlanet = answerListItem(
-          chosenPlanet,
-          chosenGravity,
-          planetImg,
-          finalUserWeight
-        );
-
+      if (chosenPlanet === planet.name) {
+        let finalUserWeight = calculateMyWeight(uWeight, planet.gravity);
+        let answerPlanet = answerListItem(planet, finalUserWeight);
         arrayTotalAnswers.push(answerPlanet);
       }
     }
-  }
+  });
 
   nodeTotalAnswers.append(...arrayTotalAnswers);
   return nodeTotalAnswers;
