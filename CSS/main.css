@@ -63,6 +63,8 @@ ul > li {
     min-height: 100vh;
     position: relative;
     display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
     background-image: url('https://bit.ly/3Soflsj');
     background-size: cover;
     background-position: center;
@@ -82,10 +84,11 @@ ul > li {
 
 .header {
     padding: 4rem;    
-    height: fit-content;
+    height: 15vh;
 }
 
 .main-navigation {
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -121,8 +124,12 @@ ul > li {
     width: 100%;
     max-width: 780px;
     margin: 0 auto;
+    height: 70vh;
 
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .calculator--form {
@@ -255,10 +262,12 @@ input[type="checkbox"]:checked::before {
 /* FOOTER */
 
 .footer {
-    height: fit-content;
+    height: 15vh;
     padding: 4rem;
     text-align: center;
-    align-self: end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer > p {

@@ -4,24 +4,64 @@ import { solarSystem } from "./source/planets.js";
 import planetCard from "./source/components/planet-card.js";
 customElements.define("planet-card", planetCard);
 
+/* Start program */
+try {
+  const button = document.querySelector(".form--button");
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    let answerList = document.querySelector(
+      ".answer-container > ul.planets-list"
+    );
+
+    if (answerList.innerHTML !== "") {
+      removingPrevAnswers();
+    }
+
+    startProgram();
+
+    document.querySelector(".calculator--form").reset();
+  });
+} catch (e) {
+  console.error(e);
+}
+
 // Obteniendo el los planetas deseados por el usuario
 function getPlanetsInput() {
   let selectedPlanets = document.querySelectorAll("input[type=checkbox]");
-  let InitialAnswers = [...selectedPlanets];
+  const planetsWarnText = document.querySelector("div.warn P.planets--warn");
+  let selectedPlanetsArray = [...selectedPlanets];
   let realAnswers = [];
-  InitialAnswers.forEach((answer) => {
+
+  selectedPlanetsArray.forEach((answer) => {
     if (answer.checked) {
       realAnswers.push(answer.value);
     }
   });
-  return realAnswers;
+
+  if (realAnswers.length === 0) {
+    planetsWarnText.textContent = `Please choose at least one planet`;
+    planetsWarnText.style = `color: red; font-size: 1.2rem;`;
+  } else {
+    planetsWarnText.textContent = "";
+    return realAnswers;
+  }
 }
 
 // Get user input weight
 function getUserWeight() {
   let userWeight = document.querySelector("#earth");
-  let weightValue = parseInt(userWeight.value);
-  return weightValue;
+  const weightWarnText = document.querySelector("div.warn P.weight--warn");
+
+  if (userWeight.value === "") {
+    weightWarnText.textContent = `Please write a valid number`;
+    weightWarnText.style = `color: red; font-size: 1.2rem;`;
+  } else {
+    weightWarnText.textContent = "";
+    document.querySelector(".form--button").removeAttribute("disabled");
+    let weightValue = parseInt(userWeight.value);
+    return weightValue;
+  }
 }
 
 // Calculate weight in other planets
@@ -53,86 +93,76 @@ function answerListItem(planet, finalUW) {
 }
 
 // calculating and  pushing each answer to a container
-function gettingPlanetAnswers(chosenPlanets, uWeight) {
-  let arrayTotalAnswers = [];
-  let nodeTotalAnswers = document.createElement("ul");
-  nodeTotalAnswers.classList.add("answers-container");
+function answersList(chosenPlanets, uWeight) {
+  let totalAnswers = [];
 
-  chosenPlanets.forEach((chosenPlanet) => {
-    for (let index = 0; index < solarSystem.length; index++) {
-      const planet = solarSystem[index];
+  if (chosenPlanets && uWeight) {
+    chosenPlanets.forEach((chosenPlanet) => {
+      for (let index = 0; index < solarSystem.length; index++) {
+        const planet = solarSystem[index];
 
-      if (chosenPlanet === planet.name) {
-        let finalUserWeight = calculateMyWeight(uWeight, planet.gravity);
-        let answerPlanet = answerListItem(planet, finalUserWeight);
-        arrayTotalAnswers.push(answerPlanet);
+        if (chosenPlanet === planet.name) {
+          let finalUserWeight = calculateMyWeight(uWeight, planet.gravity);
+          let answerPlanet = answerListItem(planet, finalUserWeight);
+          totalAnswers.push(answerPlanet);
+        }
       }
-    }
-  });
+    });
 
-  nodeTotalAnswers.append(...arrayTotalAnswers);
-  return nodeTotalAnswers;
+    return totalAnswers;
+  }
+}
+
+// removing prev answers
+function removingPrevAnswers() {
+  let prevAnswers = document.querySelectorAll(
+    ".answer-container > ul.planets-list li.answer"
+  );
+
+  let answersToDelete = [...prevAnswers];
+
+  answersToDelete.forEach((answer) => {
+    answer.remove();
+  });
 }
 
 // Main function
 function startProgram() {
-  // Getting Planets
+  // Generando operaciones
   let chosenPlanets = getPlanetsInput();
-
-  // Getting user weight
   let userWeight = getUserWeight();
+  let finalAnswers = answersList(chosenPlanets, userWeight);
 
-  // Calculating my weight
-  let finalAnswers = gettingPlanetAnswers(chosenPlanets, userWeight);
+  if (finalAnswers) {
+    // Imprimiendo resultados en pantalla
+    const userName = document.querySelector("h2.answer-title .user-name");
+    userName.textContent = "%%Name%%!";
 
-  // Creando contenedor de sección de respuestas
-  const answerContainer = document.createElement("section");
-  answerContainer.classList.add("answer-container");
+    const HTMLuserWeight = document.querySelector(
+      ".answer-container > p > .user-weight"
+    );
 
-  // The close tab of main container
-  const closeIcon = document.createElement("img");
-  closeIcon.classList.add("close-icon");
-  closeIcon.src = "../assets/icons/close.png";
+    HTMLuserWeight.textContent = `${userWeight}kg`;
 
-  const iconContainer = document.createElement("div");
-  iconContainer.classList.add("icon-container");
+    const answerContainer = document.querySelector(
+      ".answer-container > ul.planets-list"
+    );
 
-  iconContainer.append(closeIcon);
+    answerContainer.append(...finalAnswers);
 
-  // Title
-  const answerTitle = document.createElement("h2");
-  answerTitle.classList.add("answer-title");
-  answerTitle.textContent = "Hi Friend!";
+    // Logica de intercambio de pantallas
+    const answerSection = document.querySelector("section.answers-section");
+    const calculator = document.querySelector("main.calculator");
 
-  const inputRemainder = document.createElement("p");
-  inputRemainder.classList.add("user-input-reminder");
-  inputRemainder.textContent = `Your weight in the planet ${solarSystem[2].name} is ${userWeight}`;
-
-  const finalTitle = document.createElement("h3");
-  finalTitle.classList.add("final-planets-title");
-  finalTitle.textContent = "Your weight in the chosen planets";
-
-  answerContainer.append(
-    iconContainer,
-    answerTitle,
-    inputRemainder,
-    finalTitle,
-    finalAnswers
-  );
-
-  const calculator = document.querySelector(".calculator");
-  calculator.appendChild(answerContainer);
-
-  const closeNode = () => {
-    calculator.removeChild(answerContainer);
-  };
-
-  closeIcon.addEventListener("click", closeNode);
+    if (
+      answerSection.classList.contains("hidden-element") &&
+      !calculator.classList.contains("hidden-element")
+    ) {
+      answerSection.classList.remove("hidden-element");
+      calculator.classList.add("hidden-element");
+    } else {
+      answerSection.classList.add("hidden-element");
+      calculator.classList.remove("hidden-element");
+    }
+  }
 }
-
-const button = document.querySelector(".button");
-button.addEventListener("click", (event) => {
-  event.preventDefault();
-  startProgram();
-  document.querySelector(".calculator--form").reset();
-});

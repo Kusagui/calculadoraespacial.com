@@ -36,26 +36,19 @@
       </nav>
     </header>
 
-    <section class="hero-section">
-      <h1 class="hero--title">Calculate your weight in other planets</h1>
-      <h2 class="hero--subtitle">Write down your weight in kilograms</h2>
-    </section>
-
     <section class="info-section hidden-element"></section>
 
-    <section class="calculator">
+    <main class="calculator">
+      <section class="hero-section">
+        <h1 class="hero--title">Calculate your weight in other planets</h1>
+        <h2 class="hero--subtitle">Write down your weight in kilograms</h2>
+      </section>
+
       <form action="" class="calculator--form">
         <div class="form__user-input">
           <section class="earth-section">
             <label for="earth">Earth</label>
-            <input
-              type="number"
-              id="earth"
-              name="earth"
-              placeholder="82"
-              value="0"
-              required
-            />
+            <input type="number" id="earth" name="earth" required />
             <div class="warn">
               <p class="weight--warn"></p>
               <p class="planets--warn"></p>
@@ -63,7 +56,7 @@
           </section>
 
           <section class="button-section">
-            <button type="button" class="button">Calculate</button>
+            <button type="button" class="form--button">Calculate</button>
           </section>
         </div>
 
@@ -156,11 +149,19 @@
           </label>
         </fieldset>
       </form>
+    </main>
+
+    <section class="answers-section hidden-element">
+      <div class="answer-container">
+        <h2 class="answer-title">Hi <span class="user-name"></span></h2>
+        <p class="earth-weight">
+          Your weight in the planet Earth is: <span class="user-weight"></span>
+        </p>
+
+        <h3>Chosen planets:</h3>
+        <ul class="planets-list"></ul>
+      </div>
     </section>
-
-    <aside class="aside-info hidden-element"></aside>
-
-    <section class="answers-section hidden-element"></section>
 
     <footer class="footer">
       <p>Made with <span>♥</span> by <a href="#">Carlos Machado</a></p>
