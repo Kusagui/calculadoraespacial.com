@@ -1,8 +1,25 @@
+.answers-section {
+    height: 70vh;
+}
+
+.answers-section .button-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.answers-section .button-container .button__close {
+    cursor: pointer;
+}
+
 .answer-container {
     width: 100%;
-    max-width: 1980px;
-    min-height: 70vh;    
-    padding: 8rem 4rem 4rem;
+    max-width: 1980px; 
+    padding: 4rem;
     margin: 0 auto;
 }
 

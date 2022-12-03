@@ -22,21 +22,20 @@
     <div class="page-background"></div>
     <header class="header">
       <nav class="main-navigation">
-        <section>
-          <button>
-            <img src="#" alt="about this proyect" />
+        <section class="description-section">
+          <button class="button__description">
+            <img src="#" alt="Descripción" title="Descripción del proyecto" />
           </button>
         </section>
-        <section>
-          <button>
-            <span>Contact</span>
-            <img src="#" alt="my info" />
+        <section class="contact-section">
+          <button class="button__contact">
+            <img src="#" alt="Contacto" title="Datos de contacto" />
           </button>
         </section>
       </nav>
     </header>
 
-    <section class="info-section hidden-element"></section>
+    <section class="project-description-section hidden-element"></section>
 
     <main class="calculator">
       <section class="hero-section">
@@ -47,8 +46,23 @@
       <form action="" class="calculator--form">
         <div class="form__user-input">
           <section class="earth-section">
-            <label for="earth">Earth</label>
-            <input type="number" id="earth" name="earth" required />
+            <label for="earth">Weight</label>
+            <input
+              type="number"
+              id="earth"
+              name="earth"
+              placeholder="Your weight (required)"
+              required
+            />
+
+            <label for="user-name">Name</label>
+            <input
+              type="text"
+              id="user-name"
+              name="user-name"
+              placeholder="Your name (optional)"
+            />
+
             <div class="warn">
               <p class="weight--warn"></p>
               <p class="planets--warn"></p>
@@ -151,11 +165,17 @@
       </form>
     </main>
 
+    <aside class="contact-section hidden-element"></aside>
+
     <section class="answers-section hidden-element">
+      <div class="button-container">
+        <button class="button__close" type="button">Close</button>
+      </div>
       <div class="answer-container">
         <h2 class="answer-title">Hi <span class="user-name"></span></h2>
         <p class="earth-weight">
-          Your weight in the planet Earth is: <span class="user-weight"></span>
+          The Earth has a gravity of 9.8m/s<sup>2</sup> and you weight is:
+          <span class="user-weight"></span>
         </p>
 
         <h3>Chosen planets:</h3>

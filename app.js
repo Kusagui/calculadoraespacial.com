@@ -6,21 +6,19 @@ customElements.define("planet-card", planetCard);
 
 /* Start program */
 try {
-  const button = document.querySelector(".form--button");
-  button.addEventListener("click", (event) => {
+  const formButton = document.querySelector(".form--button");
+  formButton.addEventListener("click", (event) => {
     event.preventDefault();
-
-    let answerList = document.querySelector(
-      ".answer-container > ul.planets-list"
-    );
-
-    if (answerList.innerHTML !== "") {
-      removingPrevAnswers();
-    }
-
+    removingPrevAnswers();
     startProgram();
-
     document.querySelector(".calculator--form").reset();
+  });
+
+  const closeButton = document.querySelector(".button__close");
+  closeButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    removingPrevAnswers();
+    hideAndShowComponents();
   });
 } catch (e) {
   console.error(e);
@@ -44,6 +42,7 @@ function getPlanetsInput() {
     planetsWarnText.style = `color: red; font-size: 1.2rem;`;
   } else {
     planetsWarnText.textContent = "";
+    planetsWarnText.style = "";
     return realAnswers;
   }
 }
@@ -51,16 +50,23 @@ function getPlanetsInput() {
 // Get user input weight
 function getUserWeight() {
   let userWeight = document.querySelector("#earth");
+  let weightValue = parseInt(userWeight.value);
   const weightWarnText = document.querySelector("div.warn P.weight--warn");
 
-  if (userWeight.value === "") {
+  if (userWeight.value === "" || weightValue === 0) {
     weightWarnText.textContent = `Please write a valid number`;
     weightWarnText.style = `color: red; font-size: 1.2rem;`;
   } else {
     weightWarnText.textContent = "";
-    document.querySelector(".form--button").removeAttribute("disabled");
-    let weightValue = parseInt(userWeight.value);
+    weightWarnText.style = "";
     return weightValue;
+  }
+}
+
+function getUserName() {
+  let userName = document.getElementById("user-name");
+  if (userName.value !== "") {
+    return userName.value;
   }
 }
 
@@ -115,15 +121,38 @@ function answersList(chosenPlanets, uWeight) {
 
 // removing prev answers
 function removingPrevAnswers() {
-  let prevAnswers = document.querySelectorAll(
-    ".answer-container > ul.planets-list li.answer"
+  let answerList = document.querySelector(
+    ".answer-container > ul.planets-list"
   );
 
-  let answersToDelete = [...prevAnswers];
+  if (answerList.innerHTML !== "") {
+    let prevAnswers = document.querySelectorAll(
+      ".answer-container > ul.planets-list li.answer"
+    );
 
-  answersToDelete.forEach((answer) => {
-    answer.remove();
-  });
+    let answersToDelete = [...prevAnswers];
+
+    answersToDelete.forEach((answer) => {
+      answer.remove();
+    });
+  }
+}
+
+function hideAndShowComponents() {
+  // Logica de intercambio de pantallas
+  const answerSection = document.querySelector("section.answers-section");
+  const calculator = document.querySelector("main.calculator");
+
+  if (
+    answerSection.classList.contains("hidden-element") &&
+    !calculator.classList.contains("hidden-element")
+  ) {
+    answerSection.classList.remove("hidden-element");
+    calculator.classList.add("hidden-element");
+  } else {
+    answerSection.classList.add("hidden-element");
+    calculator.classList.remove("hidden-element");
+  }
 }
 
 // Main function
@@ -131,12 +160,15 @@ function startProgram() {
   // Generando operaciones
   let chosenPlanets = getPlanetsInput();
   let userWeight = getUserWeight();
+  let userName = getUserName();
   let finalAnswers = answersList(chosenPlanets, userWeight);
 
   if (finalAnswers) {
     // Imprimiendo resultados en pantalla
-    const userName = document.querySelector("h2.answer-title .user-name");
-    userName.textContent = "%%Name%%!";
+    if (userName) {
+      const name = document.querySelector("h2.answer-title .user-name");
+      name.textContent = userName;
+    }
 
     const HTMLuserWeight = document.querySelector(
       ".answer-container > p > .user-weight"
@@ -150,19 +182,6 @@ function startProgram() {
 
     answerContainer.append(...finalAnswers);
 
-    // Logica de intercambio de pantallas
-    const answerSection = document.querySelector("section.answers-section");
-    const calculator = document.querySelector("main.calculator");
-
-    if (
-      answerSection.classList.contains("hidden-element") &&
-      !calculator.classList.contains("hidden-element")
-    ) {
-      answerSection.classList.remove("hidden-element");
-      calculator.classList.add("hidden-element");
-    } else {
-      answerSection.classList.add("hidden-element");
-      calculator.classList.remove("hidden-element");
-    }
+    hideAndShowComponents();
   }
 }

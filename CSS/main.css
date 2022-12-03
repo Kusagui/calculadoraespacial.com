@@ -83,7 +83,10 @@ ul > li {
 /*----------Header----------*/
 
 .header {
+    width: 100%;
+    max-width: 1920px;
     padding: 4rem;    
+    margin: 0 auto;
     height: 15vh;
 }
 
@@ -227,7 +230,7 @@ input[type="checkbox"]:checked::before {
 
 .earth-section > input {
     width: 100%;
-    max-width: 150px;
+    max-width: 170px;
     height: 30px;
     margin: 0 auto;
     padding-inline-start: var(--small-padding);
@@ -245,7 +248,7 @@ input[type="checkbox"]:checked::before {
 
 .button-section > button {
     width: 100%;
-    max-width: 150px;
+    max-width: 170px;
     padding-block: var(--small-padding);
     background-color: var(--medium-purple);
     border: none;
