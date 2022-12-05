@@ -261,6 +261,19 @@ input[type="checkbox"]:checked::before {
     background-color: var(--dark-purple);
 }
 
+div.warn P.planets--warn,
+div.warn P.weight--warn {
+    color: red;
+    font-size: 1.2rem;
+}
+
+.description-section {
+    width: 100%;
+    max-width: 780px;
+    margin: 0 auto;
+    height: 70vh;
+}
+
 
 /* FOOTER */
 

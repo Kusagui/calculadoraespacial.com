@@ -10,15 +10,23 @@ try {
   formButton.addEventListener("click", (event) => {
     event.preventDefault();
     removingPrevAnswers();
-    startProgram();
-    document.querySelector(".calculator--form").reset();
+    insertAnswers();
   });
 
   const closeButton = document.querySelector(".button__close");
   closeButton.addEventListener("click", (event) => {
     event.preventDefault();
     removingPrevAnswers();
-    hideAndShowComponents();
+    hideAndShowAnswers();
+  });
+
+  const infoButton = document.querySelector(
+    ".header .info-section .info__button"
+  );
+  infoButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    removingPrevAnswers();
+    showAndHideProyectInfo();
   });
 } catch (e) {
   console.error(e);
@@ -39,10 +47,8 @@ function getPlanetsInput() {
 
   if (realAnswers.length === 0) {
     planetsWarnText.textContent = `Please choose at least one planet`;
-    planetsWarnText.style = `color: red; font-size: 1.2rem;`;
   } else {
     planetsWarnText.textContent = "";
-    planetsWarnText.style = "";
     return realAnswers;
   }
 }
@@ -55,17 +61,17 @@ function getUserWeight() {
 
   if (userWeight.value === "" || weightValue === 0) {
     weightWarnText.textContent = `Please write a valid number`;
-    weightWarnText.style = `color: red; font-size: 1.2rem;`;
   } else {
     weightWarnText.textContent = "";
-    weightWarnText.style = "";
     return weightValue;
   }
 }
 
+// Getting user name
 function getUserName() {
   let userName = document.getElementById("user-name");
-  if (userName.value !== "") {
+  let regex = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
+  if (userName.value !== "" && regex.test(userName.value)) {
     return userName.value;
   }
 }
@@ -78,19 +84,17 @@ function calculateMyWeight(userW, planetG) {
 }
 
 // Creating the answer by planet card
-function answerListItem(planet, finalUW) {
-  let pName = planet.name;
-  let pGravity = planet.gravity;
-  let pImage = planet.photo;
+function answerListItem(p, finalUW) {
+  let planet = p;
   let uWeight = finalUW;
 
   const answerContainer = document.createElement("li");
   answerContainer.classList.add("answer");
 
   const pCard = document.createElement("planet-card");
-  pCard.dataset.name = pName;
-  pCard.dataset.img = pImage;
-  pCard.dataset.gravity = pGravity;
+  pCard.dataset.name = planet.name;
+  pCard.dataset.img = planet.photo;
+  pCard.dataset.gravity = planet.gravity;
   pCard.dataset.userWeight = uWeight.toFixed(2);
 
   answerContainer.appendChild(pCard);
@@ -138,7 +142,7 @@ function removingPrevAnswers() {
   }
 }
 
-function hideAndShowComponents() {
+function hideAndShowAnswers() {
   // Logica de intercambio de pantallas
   const answerSection = document.querySelector("section.answers-section");
   const calculator = document.querySelector("main.calculator");
@@ -155,8 +159,27 @@ function hideAndShowComponents() {
   }
 }
 
+function showAndHideProyectInfo() {
+  const answerSection = document.querySelector("section.answers-section");
+  const calculator = document.querySelector("main.calculator");
+  const infoContainer = document.querySelector(".description-section");
+
+  if (
+    (!answerSection.classList.contains("hidden-element") ||
+      !calculator.classList.contains("hidden-element")) &&
+    infoContainer.classList.contains("hidden-element")
+  ) {
+    answerSection.classList.add("hidden-element");
+    calculator.classList.add("hidden-element");
+    infoContainer.classList.remove("hidden-element");
+  } else {
+    infoContainer.classList.add("hidden-element");
+    calculator.classList.remove("hidden-element");
+  }
+}
+
 // Main function
-function startProgram() {
+function insertAnswers() {
   // Generando operaciones
   let chosenPlanets = getPlanetsInput();
   let userWeight = getUserWeight();
@@ -181,7 +204,7 @@ function startProgram() {
     );
 
     answerContainer.append(...finalAnswers);
-
-    hideAndShowComponents();
+    hideAndShowAnswers();
+    document.querySelector(".calculator--form").reset();
   }
 }
