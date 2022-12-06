@@ -19,17 +19,29 @@ class planetCard extends HTMLElement {
       <style>
         :host {
           width: 100%;
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
         }
 
         .planet-card {
           display: flex;
           width: 100%;
+          max-width: 340px;
+          min-width: 320px;
+        }
+
+        .planet-card .image-container {
+          flex: 1;
+          margin: 0;
+          padding: 0;
         }
         
         .planet-card .image-container .card--image {
-          width: 150px;
-          height: 150px;
-          border-radius: 100%;
+          width: 100%;
+          max-width: 200px;
+          min-height: 200px;
+          border-radius: 100%; 
         }
       </style>
     `;

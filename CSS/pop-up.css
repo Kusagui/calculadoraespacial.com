@@ -1,9 +1,13 @@
 .answers-section {
-    height: 70vh;
+    width: 100%;
+    max-width: 1920px;
+    min-height: 70vh;
+    margin: 0 auto;
 }
 
 .answers-section .button-container {
     width: 100%;
+    min-width: 300px;
     max-width: 1600px;
     margin: 0 auto;
     padding: 0 4rem;
@@ -18,7 +22,8 @@
 
 .answer-container {
     width: 100%;
-    max-width: 1980px; 
+    min-width: 300px;
+    max-width: 1920px;
     padding: 4rem;
     margin: 0 auto;
 }
@@ -37,11 +42,11 @@
     margin-block-end: var(--medium-margin);
 }
 
-.answer-container > h3:nth-child(3) {
+.answer-container>h3:nth-child(3) {
     font-size: var(--big-size-title);
     color: var(--main-white);
     text-align: center;
-    font-weight: 500;   
+    font-weight: 500;
 }
 
 
@@ -49,31 +54,20 @@
 .planets-list {
     width: 100%;
     max-width: 1600px;
+    min-width: 300px;
     margin: 0 auto;
     margin-block-start: var(--medium-margin);
-    height: auto;
     padding: 2rem 2rem 0 2rem;
-    
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
 }
 
-.planets-list > .answer {
+.planets-list>.answer {
+    grid-column: span 2;
     width: 100%;
     padding: var(--small-padding);
 }
-
-.planet-card {
-    display: flex;
-    width: 100%;
-}
-
-/*  Planet cards */
-.image-container > .planet-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 100%;
-}
-
-

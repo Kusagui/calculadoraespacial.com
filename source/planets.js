@@ -24,7 +24,7 @@ const earth = new Planet({
   name: "Earth",
   gravity: 9.8,
   photo:
-    "https://media.giphy.com/media/zwoRf2Ww6LPk4tCL9m/giphy-downsized-large.gif",
+    "https://media.giphy.com/media/zwoRf2Ww6LPk4tCL9m/giphy-downsized-large.gif" ?? undefined,
 });
 
 const mars = new Planet({

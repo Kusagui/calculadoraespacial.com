@@ -1,4 +1,4 @@
-:root {    
+:root {
     /* Color */
     --main-black: #100D26;
     --dark-purple: #1F1640;
@@ -32,20 +32,19 @@
     --big-margin: 4rem;
 }
 
-*
-{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html
-{
+html {
+    min-height: 100%;
     font-size: 62.5%;
-    font-family: Arial, Helvetica, sans-serif;  
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-ul > li {
+ul>li {
     list-style: none;
 }
 
@@ -72,12 +71,17 @@ ul > li {
 }
 
 .page-background {
-    position: absolute;
-    z-index: -1;
-    opacity: 0.4;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: -1;
+
     background-color: var(--dark-purple);
+    opacity: 0.4;
 }
 
 /*----------Header----------*/
@@ -85,13 +89,12 @@ ul > li {
 .header {
     width: 100%;
     max-width: 1920px;
-    padding: 4rem;    
+    padding: 4rem;
     margin: 0 auto;
     height: 15vh;
 }
 
 .main-navigation {
-    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -127,7 +130,7 @@ ul > li {
     width: 100%;
     max-width: 780px;
     margin: 0 auto;
-    height: 70vh;
+    min-height: 70vh;
 
     position: relative;
     display: flex;
@@ -138,7 +141,7 @@ ul > li {
 .calculator--form {
     width: 100%;
     padding: var(--medium-padding);
-    
+
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -151,8 +154,7 @@ ul > li {
     border: solid 2px var(--main-aqua);
     padding: var(--medium-padding);
     border-radius: 12px;
-    
-
+    background-color: rgba(65, 43, 104, 0.5);
     display: grid;
     grid-template-columns: repeat(auto-fit, 50%);
     grid-template-rows: repeat(auto-fit, 1fr);
@@ -170,18 +172,18 @@ ul > li {
 }
 
 .checkbox-container:hover {
-    background-color: var(--main-aqua);
-    color: var(--dark-purple);
+    background-color: var(--medium-purple);
+    color: var(--main-aqua);
 }
 
-.checkbox-container > input[type=checkbox] {
+.checkbox-container>input[type=checkbox] {
     -webkit-appearance: none;
     appearance: none;
     width: 24px;
     height: 24px;
     cursor: pointer;
     margin-inline-end: 1rem;
-    background-color: var(--medium-purple);
+    border: solid 2px var(--main-aqua);
     display: grid;
     place-content: center;
     border-radius: 4px;
@@ -189,13 +191,13 @@ ul > li {
 
 input[type=checkbox]::before {
     content: "";
-    width: 16px;
-    height: 16px;
+    width: 13px;
+    height: 13px;
     border-radius: 100%;
 
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1rem  1rem 4rem var(--main-aqua);
+    box-shadow: inset 1rem 1rem 4rem var(--main-aqua);
 }
 
 input[type="checkbox"]:checked::before {
@@ -210,16 +212,15 @@ input[type="checkbox"]:checked::before {
     display: flex;
     flex-direction: column;
     border-radius: 12px;
+    background-color: rgba(65, 43, 104, 0.5);
 }
 
 .earth-section {
     display: flex;
     flex-direction: column;
-
-    padding: var(--small-padding);
 }
 
-.earth-section > label {
+.earth-section>label {
     text-align: center;
     color: var(--main-white);
     font-size: var(--big-size);
@@ -228,7 +229,7 @@ input[type="checkbox"]:checked::before {
     padding: 1rem;
 }
 
-.earth-section > input {
+.earth-section>input {
     width: 100%;
     max-width: 170px;
     height: 30px;
@@ -246,23 +247,29 @@ input[type="checkbox"]:checked::before {
     margin-block-start: 1rem;
 }
 
-.button-section > button {
+.button-section>button {
     width: 100%;
     max-width: 170px;
     padding-block: var(--small-padding);
-    background-color: var(--medium-purple);
+    background-color: var(--main-aqua);
     border: none;
     border-radius: 8px;
-    color: var(--main-white);
-    font-weight: bold;
+    color: var(--medium-purple);
+    font-weight: 700;
+    font-size: var(--medium-size);
+    cursor: pointer;
 }
 
-.button-section > button:hover {
-    background-color: var(--dark-purple);
+.button-section>button:hover {
+    background-color: #2dcccd;
 }
 
-div.warn P.planets--warn,
-div.warn P.weight--warn {
+.earth-section div.warn {
+    padding: 1rem 2rem 0 2rem;
+}
+
+.earth-section div.warn P.planets--warn,
+.earth-section div.warn P.weight--warn {
     color: red;
     font-size: 1.2rem;
 }
@@ -286,29 +293,29 @@ div.warn P.weight--warn {
     justify-content: center;
 }
 
-.footer > p {
+.footer>p {
     font-size: var(--big-size);
     color: var(--main-white);
     line-height: var(--medium-size);
 }
 
-.footer > p > a {
+.footer>p>a {
     color: var(--main-aqua);
     text-decoration: none;
     font-weight: bold;
 }
 
-.footer > p > a:hover {
+.footer>p>a:hover {
     text-decoration: underline;
 }
 
-.footer > p > span {
+.footer>p>span {
     color: var(--main-aqua);
 }
 
 /* Media queries */
 @media (min-width: 720px) {
-    .form__planets-list {        
+    .form__planets-list {
         margin-inline-start: 2rem;
         margin-inline-end: 2rem;
     }
@@ -317,17 +324,17 @@ div.warn P.weight--warn {
 @media (max-height: 600px) {
     .main-body {
         grid-template-rows: auto 1fr auto;
-    } 
+    }
 }
 
 @media (max-width: 720px) {
     .main-body {
         grid-template-rows: auto 1fr auto;
-    }    
+    }
 }
 
 @media (max-width: 759px) {
-    .form__planets-list {        
+    .form__planets-list {
         margin-block-end: 1rem;
     }
 
@@ -337,7 +344,7 @@ div.warn P.weight--warn {
 }
 
 @media (min-width: 760px) {
-    .form__planets-list {        
+    .form__planets-list {
         margin: 0;
     }
 }
@@ -347,4 +354,3 @@ div.warn P.weight--warn {
         border-radius: 14px;
     }
 }
-
