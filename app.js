@@ -1,8 +1,7 @@
 // Importando los objetos planeta para manejar los datos
 import { solarSystem } from "./source/planets.js";
 // Importando componente de tarjeta para cada respuesta
-import planetCard from "./source/components/planet-card.js";
-customElements.define("planet-card", planetCard);
+import "./source/components/planet-card.js";
 
 /* Start program */
 try {

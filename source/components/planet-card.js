@@ -88,4 +88,5 @@ class planetCard extends HTMLElement {
   }
 }
 
-export default planetCard;
+customElements.define("planet-card", planetCard);
+
