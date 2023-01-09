@@ -86,6 +86,7 @@ function answerListItem(p, finalUW) {
   pCard.dataset.img = planet.photo;
   pCard.dataset.gravity = planet.gravity;
   pCard.dataset.userWeight = uWeight.toFixed(2);
+  pCard.dataset.link = planet.link;
 
   answerContainer.appendChild(pCard);
 

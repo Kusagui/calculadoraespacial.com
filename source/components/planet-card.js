@@ -19,8 +19,8 @@ class planetCard extends HTMLElement {
       <style>
         :host {
           width: 100%;
-          max-width:320px;
-          min-height:280px;
+          max-width:360px;
+          height: fit-content;
           box-sizing: border-box;
           display: grid;
           place-items: center;
@@ -104,7 +104,7 @@ class planetCard extends HTMLElement {
             <b>${this.dataset.userWeight}</b>
           </p>
           <button type="button" class="planet-button">
-            <a href="${this.dataset.link}">
+            <a href="${this.dataset.link}" title="Wikipedia link of ${this.dataset.name}" target="_blank">
               Learn more
             </a>
           </button>

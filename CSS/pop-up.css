@@ -49,6 +49,16 @@
     font-weight: 500;
 }
 
+.answers-section .button-container .button__close {
+    background: none;
+    border: none;
+}
+
+.answers-section .button-container .button__close img {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
 
 /* Ans2ers container */
 .planets-list {
@@ -60,16 +70,19 @@
     padding: 2rem 2rem 0 2rem;
 
     display: grid;
-    gap: 2rem;
+    column-gap: 1.4rem;
+    row-gap: 2rem;
     grid-auto-rows: auto;
     grid-auto-flow: dense;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
 }
 
 .planets-list>.answer {
     grid-column: span 2;
     width: 100%;
-    padding-block: var(--small-padding);
+    max-width: 360px;
+    min-width: 280px;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
