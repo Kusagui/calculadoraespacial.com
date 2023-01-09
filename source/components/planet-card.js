@@ -19,6 +19,8 @@ class planetCard extends HTMLElement {
       <style>
         :host {
           width: 100%;
+          max-width:320px;
+          min-height:280px;
           box-sizing: border-box;
           display: grid;
           place-items: center;
