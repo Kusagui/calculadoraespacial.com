@@ -18,15 +18,6 @@ try {
     removingPrevAnswers();
     hideAndShowAnswers();
   });
-
-  const infoButton = document.querySelector(
-    ".header .info-section .info__button"
-  );
-  infoButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    removingPrevAnswers();
-    showAndHideProyectInfo();
-  });
 } catch (e) {
   console.error(e);
 }

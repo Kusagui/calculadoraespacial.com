@@ -20,15 +20,17 @@ class planetCard extends HTMLElement {
         :host {
           width: 100%;
           box-sizing: border-box;
+          display: grid;
+          place-items: center;
           margin: 0;
           padding: 0;
         }
 
         .planet-card {
           display: flex;
+          justify-content: center;
+          align-items: center;
           width: 100%;
-          max-width: 340px;
-          min-width: 320px;
         }
 
         .planet-card .image-container {
@@ -39,9 +41,42 @@ class planetCard extends HTMLElement {
         
         .planet-card .image-container .card--image {
           width: 100%;
+          min-width: 140px;
           max-width: 200px;
           min-height: 200px;
           border-radius: 100%; 
+        }
+
+        .planet-card .info-container {
+          display:flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 1rem;
+
+          color: #e0d9e9;
+          font-size: 1.6rem; 
+        }
+
+        .planet-card .info-container .card--title {
+          font-size: 2.2rem;
+          color: #33f3cd;
+          margin: 0;
+          padding: 0;
+        }
+
+        button.planet-button {
+          background-color: #56308C;
+          padding: 1rem 1.4rem;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+        }
+
+        button.planet-button > a {
+          color: #e0d9e9;
+          font-weight: bold;
+          font-size: 1.4rem;
+          text-decoration:none;
         }
       </style>
     `;
@@ -57,21 +92,21 @@ class planetCard extends HTMLElement {
             src="${this.dataset.img}" 
             alt="Planeta ${this.dataset.name}"/>
         </figure>
-        <div class="info-container">
+        <section class="info-container">
           <h3 class="card--title">${this.dataset.name}</h3>
           <p class="card--description">
-            la gravedad en este planeta es de: 
-            ${this.dataset.gravity}
-            <br />
+            La gravedad en este planeta es de: 
+            <b>${this.dataset.gravity}</b>
+            <br /><br />
             Tu peso en este planeta es de: 
-            ${this.dataset.userWeight}
+            <b>${this.dataset.userWeight}</b>
           </p>
-          <button type="button">
+          <button type="button" class="planet-button">
             <a href="${this.dataset.link}">
               Learn more
             </a>
           </button>
-        </div>
+        </section>
       </article>
       ${this.getStyles()}
     `;

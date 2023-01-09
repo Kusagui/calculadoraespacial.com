@@ -69,5 +69,14 @@
 .planets-list>.answer {
     grid-column: span 2;
     width: 100%;
-    padding: var(--small-padding);
+    padding-block: var(--small-padding);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 720px) {
+    .answer-container {
+        padding-inline: 0;
+    }
 }
