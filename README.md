@@ -3,4 +3,4 @@ Proyecto inspirado en uno los primeros de lo proyectos en la infancia de Freddy 
 
 Proyecto Hecho usando HTML, CSS y Vanilla Javascript.
 
-![Web app screenshot](https://imgbox.com/tVaADlLe)
+![Web app screenshot!](https://imgbox.com/tVaADlLe)
